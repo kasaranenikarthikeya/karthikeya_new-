@@ -359,9 +359,7 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
   </div>
 
   <div class="hero-l rv">
-    <div class="hero-eyebrow">
-      <span></span> Open to opportunities · 2025
-    </div>
+
     <h1 class="hero-name">
       <span class="ln1">Kasaraneni</span>
       <span class="ln2">Karthikeya</span>
@@ -380,10 +378,7 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
         Download CV
       </a>
-      <a href="#contact" class="btn btn-ghost">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Hire Me
-      </a>
+
     </div>
     <div class="hero-socials">
       <!-- LinkedIn -->
@@ -417,7 +412,7 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
       <div class="avatar-inner">
         <img src="1744741964253.jpeg" alt="Kasaraneni Karthikeya" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
       </div>
-      <div class="avatar-badge">
+      <div class="avatar-badge" style="display: none;">
         <div class="badge-dot"></div>
         <span>Available for hire</span>
       </div>
@@ -825,7 +820,7 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
       <div class="cc-plat">CSE Pathashala</div>
       <div class="cc-name">C++ &amp; Data Structures — Summer Training</div>
       <div class="cc-date">Jun 2025</div>
-      <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#all/FMfcgzQbgcQTkDhmkvfrslVwZcThBJNx?projector=1&messagePartId=0.1" class="cc-link">View Certificate →</a>
+      <a href="https://drive.google.com/file/d/173k9x5rZ4GP-05pPDKN4G0JG1wRYFpCH/view?usp=sharing" class="cc-link">View Certificate →</a>
     </div>
   </div>
 </section>
@@ -1024,7 +1019,7 @@ const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInters
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 
 /* ══ TYPED TEXT ══ */
-const phrases=["B.Tech CSE @ Lovely Professional University","AI / ML Developer 🤖","Backend Engineer — FastAPI & WebSockets","150+ DSA Problems Solved ⚡","Building Systems That Think and Scale"];
+const phrases=["AI / ML Developer 🤖","Backend Engineer — FastAPI & WebSockets","150+ DSA Problems Solved ⚡","Building Systems That Think and Scale"];
 let pi=0,ci=0,del=false;
 const typed=document.getElementById('typed');
 function tick(){

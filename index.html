@@ -8,62 +8,30 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@300;400;500;700;800;900&family=Instrument+Serif:ital@0;1&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-/* ═══════════════════════════════════════════
-   ROOT TOKENS  — Amber-Obsidian theme
-═══════════════════════════════════════════ */
 :root{
-  --void:#020305;
-  --deep:#07090f;
-  --surface:#0d1017;
-  --card:#111520;
-  --card2:#161b26;
-  --border:rgba(255,180,50,.1);
-  --border2:rgba(255,255,255,.06);
-
-  --amber:#ffb432;
-  --amber2:#ffd580;
-  --amber3:#ff8c00;
-  --ember:#ff4500;
-  --ice:#00d4ff;
-  --mint:#00ffb3;
-  --lavender:#a78bfa;
-
-  --text:#f0ead6;
-  --muted:#7a7060;
-  --soft:#b0a890;
-
+  --void:#020305;--deep:#07090f;--surface:#0d1017;--card:#111520;--card2:#161b26;
+  --border:rgba(255,180,50,.1);--border2:rgba(255,255,255,.06);
+  --amber:#ffb432;--amber2:#ffd580;--amber3:#ff8c00;--ember:#ff4500;
+  --ice:#00d4ff;--mint:#00ffb3;--lavender:#a78bfa;
+  --text:#f0ead6;--muted:#7a7060;--soft:#b0a890;
   --grad-a:linear-gradient(135deg,#ffb432,#ff4500);
   --grad-b:linear-gradient(135deg,#00d4ff,#a78bfa);
   --grad-c:linear-gradient(135deg,#00ffb3,#00d4ff);
-
-  --glow-a:0 0 60px rgba(255,180,50,.25);
-  --glow-b:0 0 60px rgba(0,212,255,.2);
-
-  --font-head:'Cabinet Grotesk',sans-serif;
-  --font-serif:'Instrument Serif',serif;
-  --font-mono:'Fira Code',monospace;
-  --r:16px;
-  --section-pad:120px 8%;
+  --glow-a:0 0 60px rgba(255,180,50,.25);--glow-b:0 0 60px rgba(0,212,255,.2);
+  --font-head:'Cabinet Grotesk',sans-serif;--font-serif:'Instrument Serif',serif;
+  --font-mono:'Fira Code',monospace;--r:16px;--section-pad:120px 8%;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;font-size:16px}
 body{background:var(--void);color:var(--text);font-family:var(--font-head);font-weight:400;overflow-x:hidden;cursor:none}
-
-/* ── CURSOR ── */
 #cur{position:fixed;width:9px;height:9px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .08s,background .3s;mix-blend-mode:screen}
 #cur-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(255,180,50,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
 body *{cursor:none!important}
-
-/* ── PROGRESS BAR ── */
 #pgbar{position:fixed;top:0;left:0;height:2px;background:var(--grad-a);z-index:1001;width:0%;transition:width .1s}
-
-/* ── NOISE ── */
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
-
-/* ── CANVAS ── */
 #cvs{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-/* ══════════ NAV ══════════ */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:600;height:70px;padding:0 8%;display:flex;align-items:center;justify-content:space-between;background:rgba(2,3,5,0);backdrop-filter:blur(0px);border-bottom:1px solid transparent;transition:all .4s}
 nav.solid{background:rgba(2,3,5,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
 .nav-logo{font-family:var(--font-head);font-weight:900;font-size:1.3rem;background:var(--grad-a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px}
@@ -80,7 +48,7 @@ nav.solid{background:rgba(2,3,5,.92);backdrop-filter:blur(24px);border-bottom:1p
   .nav-ham{display:flex}
 }
 
-/* ══════════ LOADER ══════════ */
+/* LOADER */
 #ldr{position:fixed;inset:0;z-index:9000;background:var(--void);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .6s}
 #ldr.out{opacity:0;pointer-events:none}
 .ldr-logo{font-family:var(--font-head);font-size:3rem;font-weight:900;background:var(--grad-a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -89,7 +57,7 @@ nav.solid{background:rgba(2,3,5,.92);backdrop-filter:blur(24px);border-bottom:1p
 @keyframes ldrAnim{0%{width:0}100%{width:100%}}
 .ldr-tag{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);letter-spacing:.2em}
 
-/* ══════════ HERO ══════════ */
+/* HERO */
 #hero{min-height:100vh;display:grid;grid-template-columns:1fr auto;align-items:center;gap:5rem;padding:110px 8% 60px;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:.14;animation:blobMove 10s ease-in-out infinite}
@@ -97,37 +65,27 @@ nav.solid{background:rgba(2,3,5,.92);backdrop-filter:blur(24px);border-bottom:1p
 .b2{width:450px;height:450px;background:#ff4500;bottom:-100px;left:-80px;animation-delay:-5s}
 .b3{width:300px;height:300px;background:#00d4ff;top:40%;left:35%;animation-delay:-3s}
 @keyframes blobMove{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-40px) scale(1.08)}}
-
-/* hero left */
 .hero-l{position:relative;z-index:2}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,180,50,.07);border:1px solid rgba(255,180,50,.22);border-radius:100px;padding:.4rem 1.1rem;font-family:var(--font-mono);font-size:.72rem;color:var(--amber2);margin-bottom:1.8rem;letter-spacing:.05em}
 .hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--mint);border-radius:50%;animation:pulse 2.2s infinite}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,255,179,.5)}50%{opacity:.3;box-shadow:0 0 0 6px rgba(0,255,179,0)}}
-
 .hero-name{font-family:var(--font-head);font-size:clamp(2.8rem,7vw,5.8rem);font-weight:900;line-height:.96;letter-spacing:-3px;margin-bottom:1rem}
-.hero-name .ln1{color:var(--text)}
-.hero-name .ln2{background:var(--grad-a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-
+.hero-name .ln1{color:var(--text)}.hero-name .ln2{background:var(--grad-a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-tagline{font-size:clamp(.95rem,1.4vw,1.1rem);color:var(--soft);line-height:1.8;max-width:460px;margin-bottom:1.2rem;font-weight:300}
 .hero-tagline strong{color:var(--text);font-weight:500}
-
 .typed-line{font-family:var(--font-mono);font-size:.92rem;color:var(--amber);height:1.4em;margin-bottom:2.2rem}
 .typed-line span::after{content:'█';animation:blink .9s step-end infinite;margin-left:2px;font-size:.8em}
 @keyframes blink{50%{opacity:0}}
-
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
 .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.72rem 1.7rem;border-radius:100px;font-size:.85rem;font-weight:700;text-decoration:none;transition:all .3s;border:none;font-family:var(--font-head);letter-spacing:.03em}
 .btn-fire{background:var(--grad-a);color:#000;box-shadow:var(--glow-a)}
 .btn-fire:hover{transform:translateY(-3px);box-shadow:0 0 80px rgba(255,180,50,.45)}
 .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border2)}
 .btn-ghost:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-3px)}
-
 .hero-socials{display:flex;gap:.75rem}
 .soc{width:42px;height:42px;border-radius:12px;border:1px solid var(--border2);background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;color:var(--soft)}
 .soc:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-3px);box-shadow:var(--glow-a)}
 .soc svg{width:18px;height:18px;fill:currentColor}
-
-/* hero right – avatar */
 .hero-r{position:relative;z-index:2;flex-shrink:0}
 .avatar-wrap{position:relative;width:300px;height:300px}
 .avatar-ring{position:absolute;inset:-10px;border-radius:50%;background:conic-gradient(from 0deg,#ffb432,#ff4500,#a78bfa,#00d4ff,#ffb432);animation:spin 7s linear infinite;opacity:.8}
@@ -140,7 +98,7 @@ nav.solid{background:rgba(2,3,5,.92);backdrop-filter:blur(24px);border-bottom:1p
 .badge-dot{width:8px;height:8px;background:var(--mint);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
 @media(max-width:900px){#hero{grid-template-columns:1fr;text-align:center}.hero-r{display:none}.hero-btns,.hero-socials{justify-content:center}}
 
-/* ══════════ SECTIONS ══════════ */
+/* SECTIONS */
 section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .s-eyebrow{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.7rem;display:flex;align-items:center;gap:.7rem}
 .s-eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--amber)}
@@ -149,15 +107,13 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .s-sub{font-size:1rem;color:var(--soft);max-width:480px;line-height:1.7;font-weight:300}
 .s-divider{width:48px;height:2px;background:var(--grad-a);border-radius:2px;margin-top:1rem}
 .s-head{margin-bottom:4rem}
-
-/* reveal */
 .rv{opacity:0;transform:translateY(36px);transition:opacity .65s ease,transform .65s ease}
 .rv.on{opacity:1;transform:translateY(0)}
 .rv.rl{transform:translateX(-36px)}.rv.rl.on{transform:translateX(0)}
 .rv.rr{transform:translateX(36px)}.rv.rr.on{transform:translateX(0)}
 .d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}.d3{transition-delay:.3s!important}.d4{transition-delay:.4s!important}.d5{transition-delay:.5s!important}
 
-/* ══════════ ABOUT ══════════ */
+/* ABOUT */
 #about{background:var(--deep)}
 .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:start}
 .about-body{font-size:1.02rem;line-height:1.9;color:var(--soft);font-weight:300}
@@ -172,12 +128,11 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .info-row{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);transition:all .3s}
 .info-row:hover{border-color:rgba(255,180,50,.35);transform:translateX(6px)}
 .info-ic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;background:rgba(255,180,50,.08)}
-.info-kv{}
 .info-k{font-size:.68rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-family:var(--font-mono)}
 .info-v{font-size:.88rem;color:var(--text);font-weight:500}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
 
-/* ══════════ SKILLS ══════════ */
+/* SKILLS */
 #skills{background:var(--void)}
 .skills-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.5rem}
 .sk-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem;transition:all .35s;position:relative;overflow:hidden}
@@ -192,7 +147,7 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .chip:hover{background:rgba(255,180,50,.09);border-color:rgba(255,180,50,.35);color:var(--amber2);transform:translateY(-2px)}
 .chip svg{width:14px;height:14px;flex-shrink:0}
 
-/* ══════════ EXPERIENCE ══════════ */
+/* EXPERIENCE */
 #experience{background:var(--deep)}
 .exp-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;position:relative;overflow:hidden;transition:all .35s}
 .exp-card::after{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--grad-a);border-radius:2px}
@@ -207,15 +162,61 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .exp-tags{display:flex;flex-wrap:wrap;gap:.5rem;padding-top:1.5rem;border-top:1px solid var(--border2)}
 .exp-tag{padding:.3rem .8rem;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.18);border-radius:6px;font-size:.74rem;color:var(--ice);font-family:var(--font-mono)}
 
-/* ══════════ PROJECTS ══════════ */
+/* ═══════════════════════════════════════
+   PROJECTS — screenshot / placeholder styles
+═══════════════════════════════════════ */
 #projects{background:var(--void)}
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
 .pj{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .4s;display:flex;flex-direction:column}
 .pj:hover{transform:translateY(-10px);box-shadow:0 30px 80px rgba(0,0,0,.6);border-color:rgba(255,180,50,.3)}
-.pj-preview{height:190px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.pj-preview::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--card) 0%,transparent 60%)}
-.pj-preview .pj-icon{font-size:3.5rem;position:relative;z-index:1;filter:drop-shadow(0 0 20px currentColor)}
-.pj-badge{position:absolute;top:12px;right:12px;padding:.3rem .8rem;border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;z-index:2}
+
+/* preview area — shared base */
+.pj-preview{height:210px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+
+/* actual screenshot fill */
+.pj-preview.has-shot{padding:0}
+.pj-preview.has-shot img{
+  width:100%;height:100%;object-fit:cover;object-position:top center;
+  transition:transform .5s ease, filter .4s ease;
+  filter:brightness(.88) saturate(1.1);
+  display:block;
+}
+.pj:hover .pj-preview.has-shot img{transform:scale(1.05);filter:brightness(1) saturate(1.2)}
+
+/* overlay gradient so badge stays readable */
+.pj-preview.has-shot::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top, var(--card) 0%, transparent 55%);
+  pointer-events:none;
+}
+
+/* placeholder — dashed grid */
+.pj-preview.placeholder{
+  background:
+    repeating-linear-gradient(0deg,rgba(255,180,50,.025) 0px,rgba(255,180,50,.025) 1px,transparent 1px,transparent 40px),
+    repeating-linear-gradient(90deg,rgba(255,180,50,.025) 0px,rgba(255,180,50,.025) 1px,transparent 1px,transparent 40px),
+    var(--card2);
+  border-bottom:1px dashed rgba(255,180,50,.18);
+  flex-direction:column;
+  gap:.5rem;
+}
+.placeholder-inner{
+  display:flex;flex-direction:column;align-items:center;gap:.55rem;
+  padding:1.2rem 1.5rem;
+  background:rgba(2,3,5,.55);
+  border:1px dashed rgba(255,180,50,.28);
+  border-radius:12px;
+  backdrop-filter:blur(4px);
+  transition:border-color .3s,background .3s;
+}
+.pj:hover .placeholder-inner{border-color:rgba(255,180,50,.6);background:rgba(2,3,5,.7)}
+.ph-cam{font-size:1.9rem;line-height:1;filter:drop-shadow(0 0 8px rgba(255,180,50,.4))}
+.ph-label{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,180,50,.55);font-weight:500}
+.ph-sub{font-size:.65rem;color:var(--muted);letter-spacing:.08em;text-align:center}
+
+/* pj-badge always on top */
+.pj-badge{position:absolute;top:12px;right:12px;padding:.3rem .8rem;border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;z-index:3}
+
 .pj-body{padding:1.6rem;flex:1;display:flex;flex-direction:column}
 .pj-num{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.1em}
 .pj-title{font-family:var(--font-head);font-size:1.1rem;font-weight:800;margin-bottom:.7rem;color:var(--text)}
@@ -229,21 +230,44 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .pj-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.77rem;color:var(--soft);text-decoration:none;border:1px solid var(--border2);padding:.38rem .85rem;border-radius:100px;transition:all .3s;font-weight:500}
 .pj-btn:hover{color:var(--amber);border-color:var(--amber)}
 
-/* ══════════ CERTS ══════════ */
+/* ═══════════════════════════════════════
+   CERTS — with image placeholder slot
+═══════════════════════════════════════ */
 #certs{background:var(--deep)}
 .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem}
-.cc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem;transition:all .35s;position:relative;overflow:hidden;text-align:center}
+.cc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .35s;position:relative;}
 .cc::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent);transform:scaleX(0);transition:transform .4s}
 .cc:hover{transform:translateY(-6px);border-color:rgba(255,180,50,.4);box-shadow:var(--glow-a)}
 .cc:hover::before{transform:scaleX(1)}
-.cc-ico{width:60px;height:60px;margin:0 auto 1.1rem;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(255,180,50,.08);border:1px solid rgba(255,180,50,.2)}
+
+/* cert preview image area */
+.cc-preview{
+  width:100%;height:140px;overflow:hidden;position:relative;
+  background:
+    repeating-linear-gradient(0deg,rgba(255,180,50,.022) 0px,rgba(255,180,50,.022) 1px,transparent 1px,transparent 36px),
+    repeating-linear-gradient(90deg,rgba(255,180,50,.022) 0px,rgba(255,180,50,.022) 1px,transparent 1px,transparent 36px),
+    var(--card2);
+  border-bottom:1px dashed rgba(255,180,50,.15);
+  display:flex;align-items:center;justify-content:center;
+}
+.cc-preview img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;filter:brightness(.85) saturate(1.1);transition:transform .4s,filter .4s}
+.cc:hover .cc-preview img{transform:scale(1.04);filter:brightness(.95) saturate(1.2)}
+.cc-preview .placeholder-inner{
+  border-color:rgba(255,180,50,.2);
+  padding:.8rem 1.2rem;
+}
+.cc-preview .ph-cam{font-size:1.5rem}
+
+/* cert info section */
+.cc-body{padding:1.4rem;text-align:center}
+.cc-ico{width:52px;height:52px;margin:0 auto .85rem;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:rgba(255,180,50,.08);border:1px solid rgba(255,180,50,.2)}
 .cc-plat{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem}
 .cc-name{font-weight:700;font-size:.92rem;margin-bottom:.4rem;line-height:1.4}
 .cc-date{font-size:.73rem;color:var(--muted);font-family:var(--font-mono)}
 .cc-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:.9rem;font-size:.76rem;color:var(--amber2);text-decoration:none;font-weight:600;transition:gap .25s}
 .cc-link:hover{gap:.7rem}
 
-/* ══════════ ACHIEVEMENTS ══════════ */
+/* ACHIEVEMENTS */
 #achievements{background:var(--void);text-align:center}
 .ach-hero{margin-bottom:4rem}
 .ach-big{font-family:var(--font-head);font-size:clamp(5rem,14vw,10rem);font-weight:900;line-height:1;background:var(--grad-a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
@@ -263,7 +287,7 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .medal-s{background:rgba(192,192,192,.12);color:#c0c0c0;border:1px solid rgba(192,192,192,.3)}
 .medal-b{background:rgba(205,127,50,.12);color:#cd7f32;border:1px solid rgba(205,127,50,.3)}
 
-/* ══════════ EDUCATION ══════════ */
+/* EDUCATION */
 #education{background:var(--deep)}
 .edu-tl{position:relative;padding-left:2.8rem}
 .edu-tl::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--amber),var(--ice),transparent)}
@@ -281,7 +305,7 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .edu-meta span{font-size:.76rem;font-family:var(--font-mono);color:var(--muted)}
 .edu-meta .sc{color:var(--mint);font-weight:600}
 
-/* ══════════ CONTACT ══════════ */
+/* CONTACT */
 #contact{background:var(--void)}
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .contact-links{display:flex;flex-direction:column;gap:.9rem}
@@ -289,7 +313,6 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .c-card:hover{border-color:var(--amber);transform:translateX(6px);box-shadow:var(--glow-a)}
 .c-ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .c-ic svg{width:18px;height:18px;fill:currentColor}
-.c-kv{}
 .c-k{font-size:.67rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-family:var(--font-mono)}
 .c-v{font-size:.88rem;color:var(--text);font-weight:500}
 .contact-form{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2rem;display:flex;flex-direction:column;gap:1.1rem}
@@ -300,38 +323,26 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .fg textarea{height:110px}
 @media(max-width:768px){.contact-wrap{grid-template-columns:1fr}}
 
-/* ══════════ FOOTER ══════════ */
 footer{text-align:center;padding:2.5rem 8%;border-top:1px solid var(--border2);font-size:.8rem;color:var(--muted);position:relative;z-index:2}
 footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
-
-/* ══════════ BACK-TOP ══════════ */
 #btop{position:fixed;bottom:2rem;right:2rem;width:46px;height:46px;background:var(--grad-a);border-radius:13px;border:none;display:flex;align-items:center;justify-content:center;color:#000;font-size:1rem;z-index:500;opacity:0;transform:translateY(20px);transition:all .3s;box-shadow:var(--glow-a)}
 #btop.show{opacity:1;transform:translateY(0)}
 #btop:hover{transform:translateY(-4px);box-shadow:0 0 40px rgba(255,180,50,.6)}
-
-/* ══════════ SCROLLBAR ══════════ */
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--void)}
-::-webkit-scrollbar-thumb{background:var(--amber3);border-radius:4px}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--void)}::-webkit-scrollbar-thumb{background:var(--amber3);border-radius:4px}
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
 <div id="ldr">
   <div class="ldr-logo">KK/</div>
   <div class="ldr-track"><div class="ldr-fill"></div></div>
   <div class="ldr-tag">INITIALIZING · PORTFOLIO</div>
 </div>
-
-<!-- CURSOR -->
 <div id="cur"></div><div id="cur-ring"></div>
-<!-- PROGRESS -->
 <div id="pgbar"></div>
-<!-- CANVAS -->
 <canvas id="cvs"></canvas>
 
-<!-- ══ NAV ══ -->
+<!-- NAV -->
 <nav id="nav">
   <div class="nav-logo">KK/</div>
   <ul class="nav-menu" id="navMenu">
@@ -345,21 +356,15 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav-ham" id="ham">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-ham" id="ham"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-bg">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
   </div>
-
   <div class="hero-l rv">
-
     <h1 class="hero-name">
       <span class="ln1">Kasaraneni</span>
       <span class="ln2">Karthikeya</span>
@@ -378,49 +383,37 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
         Download CV
       </a>
-
     </div>
     <div class="hero-socials">
-      <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/karthikeya-kasaraneni/" target="_blank" class="soc" title="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-      <!-- GitHub -->
       <a href="https://github.com/kasaranenikarthikeya" target="_blank" class="soc" title="GitHub">
         <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
       </a>
-      <!-- Email -->
       <a href="mailto:kasaranenikarthikeya4@gmail.com" class="soc" title="Email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </a>
-      <!-- Phone -->
       <a href="tel:+917816036013" class="soc" title="Phone">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.11 7.01 19.79 19.79 0 01.02 2.27 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.22 6.22l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
       </a>
-      <!-- LeetCode -->
       <a href="https://leetcode.com/kasaranenikarthikeya" target="_blank" class="soc" title="LeetCode">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
       </a>
     </div>
   </div>
-
-  <!-- Avatar -->
   <div class="hero-r rv d2">
     <div class="avatar-wrap">
       <div class="avatar-ring"></div>
       <div class="avatar-glow"></div>
       <div class="avatar-inner">
-        <img src="1744741964253.jpeg" alt="Kasaraneni Karthikeya" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-      </div>
-      <div class="avatar-badge" style="display: none;">
-        <div class="badge-dot"></div>
-        <span>Available for hire</span>
+        <img src="1744741964253.jpeg" alt="Kasaraneni Karthikeya" style="width:100%;height:100%;object-fit:cover;object-position:center">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ ABOUT ══ -->
+<!-- ABOUT -->
 <section id="about">
   <div class="s-head rv">
     <div class="s-eyebrow">01 — About me</div>
@@ -443,43 +436,19 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
       </div>
     </div>
     <div class="info-stack rv rr">
-      <div class="info-row">
-        <div class="info-ic">👤</div>
-        <div class="info-kv"><div class="info-k">Full Name</div><div class="info-v">Kasaraneni Karthikeya</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ic">📍</div>
-        <div class="info-kv"><div class="info-k">Location</div><div class="info-v">Phagwara, Punjab, India</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ic">🎓</div>
-        <div class="info-kv"><div class="info-k">Degree</div><div class="info-v">B.Tech CSE — LPU · CGPA 7.6</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ic">💼</div>
-        <div class="info-kv"><div class="info-k">Role Target</div><div class="info-v">AI/ML Engineer · Backend Dev · SDE</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ic">📧</div>
-        <div class="info-kv"><div class="info-k">Email</div><div class="info-v">kasaranenikarthikeya4@gmail.com</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ic">📞</div>
-        <div class="info-kv"><div class="info-k">Phone</div><div class="info-v">+91-7816036013</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ic">🌐</div>
-        <div class="info-kv"><div class="info-k">Languages</div><div class="info-v">Telugu (Native) · Hindi · English</div></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ic">🎯</div>
-        <div class="info-kv"><div class="info-k">Interests</div><div class="info-v">ML Research · Competitive Coding · Open Source</div></div>
-      </div>
+      <div class="info-row"><div class="info-ic">👤</div><div class="info-kv"><div class="info-k">Full Name</div><div class="info-v">Kasaraneni Karthikeya</div></div></div>
+      <div class="info-row"><div class="info-ic">📍</div><div class="info-kv"><div class="info-k">Location</div><div class="info-v">Phagwara, Punjab, India</div></div></div>
+      <div class="info-row"><div class="info-ic">🎓</div><div class="info-kv"><div class="info-k">Degree</div><div class="info-v">B.Tech CSE — LPU · CGPA 7.6</div></div></div>
+      <div class="info-row"><div class="info-ic">💼</div><div class="info-kv"><div class="info-k">Role Target</div><div class="info-v">AI/ML Engineer · Backend Dev · SDE</div></div></div>
+      <div class="info-row"><div class="info-ic">📧</div><div class="info-kv"><div class="info-k">Email</div><div class="info-v">kasaranenikarthikeya4@gmail.com</div></div></div>
+      <div class="info-row"><div class="info-ic">📞</div><div class="info-kv"><div class="info-k">Phone</div><div class="info-v">+91-7816036013</div></div></div>
+      <div class="info-row"><div class="info-ic">🌐</div><div class="info-kv"><div class="info-k">Languages</div><div class="info-v">Telugu (Native) · Hindi · English</div></div></div>
+      <div class="info-row"><div class="info-ic">🎯</div><div class="info-kv"><div class="info-k">Interests</div><div class="info-v">ML Research · Competitive Coding · Open Source</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ SKILLS ══ -->
+<!-- SKILLS -->
 <section id="skills">
   <div class="s-head rv">
     <div class="s-eyebrow">02 — Tech Arsenal</div>
@@ -488,161 +457,73 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
     <p class="s-sub" style="margin-top:.8rem">A toolkit built for building — from model training to deployment at scale.</p>
   </div>
   <div class="skills-wrap">
-
-    <!-- Languages -->
     <div class="sk-card rv d1">
-      <div class="sk-head">
-        <div class="sk-ic" style="background:rgba(59,130,246,.12)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <div class="sk-name" style="color:#3b82f6">Languages</div>
-      </div>
+      <div class="sk-head"><div class="sk-ic" style="background:rgba(59,130,246,.12)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="sk-name" style="color:#3b82f6">Languages</div></div>
       <div class="chips">
-        <!-- Java -->
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#f89820"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149M8.276 15.933s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218M13.116 11.475c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0 0-8.216 2.051-4.292 6.573M19.33 20.504s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.749-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82M9.292 13.21s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.776-.892 3.776-.892M17.116 17.584c4.503-2.34 2.421-4.589.968-4.285-.355.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.928 4.562 0-.001.07-.062.09-.118M14.401 0s2.494 2.494-2.365 6.33c-3.896 3.077-.888 4.832-.001 6.836-2.274-2.053-3.943-3.858-2.824-5.539 1.644-2.469 6.197-3.665 5.19-7.627M9.734 23.924c4.322.277 10.959-.153 11.116-2.198 0 0-.302.775-3.572 1.391-3.688.694-8.239.613-10.937.168 0-.001.553.457 3.393.639"/></svg>
-          Java
-        </span>
-        <!-- Python -->
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#3776ab"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05L0 11.97l.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.31.33-.25.35-.19.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09z"/></svg>
-          Python
-        </span>
-        <!-- C -->
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#a8b9cc"><path d="M16.599 14.489c-.557.947-1.247 1.651-2.072 2.111-.824.461-1.785.691-2.882.691-1.784 0-3.226-.573-4.324-1.72-1.097-1.146-1.646-2.681-1.646-4.604 0-1.954.556-3.513 1.668-4.677 1.112-1.163 2.57-1.745 4.371-1.745 1.069 0 2.005.222 2.806.666.802.443 1.438 1.096 1.91 1.958l-1.921 1.072c-.317-.588-.742-1.039-1.277-1.353-.534-.314-1.145-.471-1.831-.471-1.14 0-2.053.387-2.737 1.162-.685.775-1.027 1.814-1.027 3.117 0 1.317.339 2.356 1.016 3.117.677.76 1.603 1.14 2.779 1.14.727 0 1.367-.183 1.921-.549.554-.366.987-.896 1.3-1.591l2.046 1.076zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-          C
-        </span>
-        <!-- C++ -->
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#00599c"><path d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.109c-3.92 0-7.109-3.189-7.109-7.109S8.08 4.891 12 4.891c2.347 0 4.412 1.148 5.675 2.906l-2.838 1.637c-.675-.926-1.754-1.538-2.837-1.538-2.016 0-3.654 1.638-3.654 3.654S9.984 15.604 12 15.604c1.083 0 2.162-.612 2.837-1.538l2.838 1.637C16.412 17.961 14.347 19.109 12 19.109zM18.81 12H17.5v-1.31h-1.31V12h-1.31v1.31h1.31v1.31h1.31v-1.31h1.31zM22.07 12h-1.31v-1.31h-1.31V12h-1.31v1.31h1.31v1.31h1.31v-1.31h1.31z"/></svg>
-          C++
-        </span>
-        <!-- SQL -->
-        <span class="chip">
-          <svg viewBox="0 0 24 24" fill="#f29111" width="14" height="14"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4zM4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4S4 11.21 4 9zm0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4S4 16.21 4 14z"/></svg>
-          SQL
-        </span>
+        <span class="chip">☕ Java</span>
+        <span class="chip">🐍 Python</span>
+        <span class="chip">⚙️ C</span>
+        <span class="chip">⚡ C++</span>
+        <span class="chip">🗃️ SQL</span>
       </div>
     </div>
-
-    <!-- ML / Data Science -->
     <div class="sk-card rv d2">
-      <div class="sk-head">
-        <div class="sk-ic" style="background:rgba(255,100,50,.12)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6432" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M20.188 10.934l-1.2-2.07a2 2 0 00-1.732-1H6.744a2 2 0 00-1.732 1L3.812 10.934A10.083 10.083 0 003 15c0 4.418 4.03 8 9 8s9-3.582 9-8a10.083 10.083 0 00-.812-4.066z"/></svg>
-        </div>
-        <div class="sk-name" style="color:#ff6432">Data Science & ML</div>
-      </div>
+      <div class="sk-head"><div class="sk-ic" style="background:rgba(255,100,50,.12)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6432" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M20.188 10.934l-1.2-2.07a2 2 0 00-1.732-1H6.744a2 2 0 00-1.732 1L3.812 10.934A10.083 10.083 0 003 15c0 4.418 4.03 8 9 8s9-3.582 9-8a10.083 10.083 0 00-.812-4.066z"/></svg></div><div class="sk-name" style="color:#ff6432">Data Science & ML</div></div>
       <div class="chips">
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#130654" width="14" height="14"><path d="M11.535 0C9.267.002 7.17.64 5.41 1.76c-.03.013-.055.03-.08.05L.2 4.797 0 4.92v14.16l5.46 3.125.14.08c.002 0 .002 0 .003.002l5.78 3.31.22.126.22-.126 5.78-3.31.003-.002.14-.08L23.22 18.8l.156-.087.024-.013V4.92l-.2-.122-5.13-2.988c-.025-.02-.05-.037-.08-.05C16.23.64 14.133.002 11.866 0h-.331zm.128 2.1c.043 0 .086 0 .129.002.875.016 1.726.165 2.528.427L11.66 4.234 9.07 2.536c.786-.26 1.637-.41 2.52-.427a9.43 9.43 0 01.072-.008zm-4.04.935l3 1.958-3.205 2.09L4.29 4.914c1.01-.71 2.15-1.25 3.333-1.878zm8.143 0c1.183.626 2.322 1.168 3.333 1.879l-3.127 2.168-3.205-2.09 3-1.958zm-4.1 2.78l3.16 2.064-3.126 2.04L8.57 7.876 11.666 5.816zM4.092 6.103l3.034 2.103-1.875 5.564-3.098-2.147 1.94-3.52zm15.483.002l1.94 3.52-3.098 2.147-1.875-5.564 3.033-2.103zM2.083 7.79l-2.08 3.78v5.7L2.082 15.8v-8.01zm19.5 0v8.01l2.083 1.473V11.57l-2.084-3.78zm-11.917 2.64l3.127 2.04v4.252L11.666 18.8 8.54 16.72V12.47l3.127-2.04zm-4.24 2.94l1.876 5.566-3.034 2.1-1.942-3.52 3.1-4.147zm12.738 0l3.1 4.147-1.942 3.52-3.034-2.1 1.876-5.567zm-7.374 6.31l3.126 2.04-3.25 1.86-3.25-1.86 3.125-2.04h.25z"/></svg>Pandas</span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#4d77cf" width="14" height="14"><path d="M11.998 0C5.366 0 0 5.367 0 12A12 12 0 0012 24c6.633 0 12-5.367 12-12 0-6.634-5.367-12-12.002-12zM9.15 14.066c0 1.67-.008 1.586.207 2.074.21.482.68.81 1.25.81.533 0 1.01-.302 1.228-.76.242-.504.21-1.047.21-2.124h2.16c0 .633.04 1.215-.089 1.72a3.24 3.24 0 01-3.51 2.47 3.213 3.213 0 01-3.107-1.97c-.21-.487-.32-.97-.32-1.645V9.817c0-.623.097-1.168.29-1.63a3.261 3.261 0 013.14-2.046 3.24 3.24 0 013.16 2.038c.188.466.276 1.014.276 1.638v1.654H9.15v2.594zm5.664-3.84H9.15V8.792c0-.576.022-1.108.298-1.5.283-.396.75-.613 1.26-.613.54 0 1.013.234 1.29.636.265.382.295.926.295 1.477h2.52V9.79l-.001.437z"/></svg>NumPy</span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#f7931e" width="14" height="14"><path d="M.42 0C.188 0 0 .19 0 .425v23.152C0 23.813.188 24 .42 24H24V0H.42zm12.247 7.117v1.69h1.69v1.69h-1.69v1.692h-1.69V10.5H9.29V8.81h1.69V7.117h1.688zM9.29 7.117v1.69H7.601v1.694H9.29V12.193H7.601v-1.694H5.91V8.81h1.691V7.117H9.29zM5.91 5.426v1.69H4.22v1.693H5.91v1.692H4.22V8.81H2.529V7.117H4.22V5.426H5.91zm6.757 8.41h1.69v1.69h-1.69v-1.69zm0 3.382h1.69v1.69h-1.69v-1.69z"/></svg>scikit-learn</span>
-        <span class="chip">📊 Matplotlib</span>
-        <span class="chip">🌊 Seaborn</span>
-        <span class="chip">📓 Jupyter</span>
-        <span class="chip">🤖 NLP / NLTK</span>
-        <span class="chip">🎙️ Speech AI</span>
+        <span class="chip">📊 Pandas</span><span class="chip">🔢 NumPy</span><span class="chip">🤖 scikit-learn</span>
+        <span class="chip">📈 Matplotlib</span><span class="chip">🌊 Seaborn</span><span class="chip">📓 Jupyter</span>
+        <span class="chip">🤖 NLP / NLTK</span><span class="chip">🎙️ Speech AI</span>
       </div>
     </div>
-
-    <!-- Backend -->
     <div class="sk-card rv d1">
-      <div class="sk-head">
-        <div class="sk-ic" style="background:rgba(0,212,255,.1)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-        </div>
-        <div class="sk-name" style="color:#00d4ff">Backend & APIs</div>
-      </div>
+      <div class="sk-head"><div class="sk-ic" style="background:rgba(0,212,255,.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div class="sk-name" style="color:#00d4ff">Backend & APIs</div></div>
       <div class="chips">
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#009485" width="14" height="14"><path d="M0 0h24v24H0z" fill="none"/><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>Tailwind CSS</span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#009688" width="14" height="14"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>FastAPI</span>
-        <span class="chip">🌶️ Flask</span>
-        <span class="chip">🔌 WebSockets</span>
-        <span class="chip">🔐 JWT Auth</span>
-        <span class="chip">🔗 REST APIs</span>
-        <span class="chip">🐋 Docker (basics)</span>
+        <span class="chip">⚡ FastAPI</span><span class="chip">🌶️ Flask</span><span class="chip">🔌 WebSockets</span>
+        <span class="chip">🔐 JWT Auth</span><span class="chip">🔗 REST APIs</span><span class="chip">🐋 Docker (basics)</span>
       </div>
     </div>
-
-    <!-- Databases -->
     <div class="sk-card rv d2">
-      <div class="sk-head">
-        <div class="sk-ic" style="background:rgba(0,255,179,.1)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ffb3" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-        </div>
-        <div class="sk-name" style="color:#00ffb3">Databases</div>
-      </div>
+      <div class="sk-head"><div class="sk-ic" style="background:rgba(0,255,179,.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ffb3" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div class="sk-name" style="color:#00ffb3">Databases</div></div>
       <div class="chips">
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#4479A1" width="14" height="14"><path d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.18-.153zM5.77 18.695h-.927a50.854 50.854 0 00-.27-4.41h-.008l-1.41 4.41H2.45l-1.4-4.41h-.01a72.892 72.892 0 00-.195 4.41H0c.055-1.966.192-3.81.41-5.55h1.08l1.3 3.957 1.3-3.957h1.06c.24 1.74.38 3.582.44 5.55zm4.1 0H8.936v-2.41c0-.636-.24-.955-.715-.955-.477 0-.7.32-.7.955v2.41H6.59v-2.55c0-.526.134-.94.4-1.24.284-.3.654-.454 1.11-.454.55 0 .967.21 1.25.63l.27-.542h.05v.55c-.014.197-.02.547-.02 1.052v2.554zm4.74-1.508c0 .568-.16 1.015-.477 1.338-.318.324-.762.487-1.33.487-.53 0-.95-.163-1.258-.489-.31-.326-.463-.77-.463-1.336v-4.04h.938v4.03c0 .39.084.68.253.868.17.188.415.28.73.28.32 0 .56-.092.72-.274.155-.18.233-.47.233-.873v-4.03h.953v4.04zm2.033.95c-.277 0-.524-.085-.74-.26l-.02.22h-.95c.027-.428.04-.972.04-1.63v-5.3l.945-.13v2.74c.21-.254.502-.384.875-.384.43 0 .765.163 1 .487.24.323.36.788.36 1.395v.077c0 .597-.125 1.063-.374 1.397-.248.337-.598.508-1.05.508l-.086-.12zm.32-3.45c-.228 0-.406.065-.534.197-.128.13-.193.327-.193.586v1.34c0 .27.066.47.197.597.13.127.31.19.534.19.244 0 .434-.09.565-.273.133-.182.2-.47.2-.865v-.077c0-.398-.065-.688-.196-.873-.132-.185-.32-.278-.573-.278zm4.42 3.45h-.96v-2.555c0-.636-.24-.955-.716-.955-.476 0-.7.32-.7.955v2.41h-.937v-2.55c0-.526.135-.94.4-1.24.285-.3.655-.454 1.11-.454.55 0 .968.21 1.25.63l.27-.542h.05v.55c-.014.197-.02.547-.02 1.052v2.554h.255zM24 7.29v-1.65c-1.455.056-2.924.06-4.37-.063-.063 0-.124.024-.175.065v.013c.055.048.11.09.158.144l.05.08c.032.05.06.09.082.14.168.347.294.713.354 1.085.04.263.056.47.056.612V7.5c0 .182-.02.363-.062.542-.1.433-.344.802-.694 1.06-.357.263-.806.396-1.345.396-.547 0-1.015-.135-1.393-.4-.376-.27-.616-.64-.716-1.096a2.45 2.45 0 01-.048-.455v-.245c0-.168.017-.383.053-.647.062-.404.192-.77.388-1.09.022-.05.052-.094.085-.137l.067-.098c.052-.07.11-.133.173-.19v-.01c-.058-.043-.12-.066-.18-.065-1.17.112-2.32.117-3.476.065-.09-.003-.155.022-.2.063.01.05.018.1.018.15.018.148.053.59.07.748.026.266.036.534.036.8v.26c0 .188-.016.37-.047.546-.1.434-.34.81-.72 1.07-.38.256-.85.384-1.41.384-.537 0-1-.133-1.385-.4-.38-.266-.625-.633-.735-1.1a2.496 2.496 0 01-.056-.484v-.27c0-.19.02-.4.057-.636.07-.4.21-.766.42-1.09l.068-.093c.022-.04.05-.075.08-.115.025-.034.054-.07.08-.103V6.78c-.05-.04-.1-.06-.16-.054-1.294.06-2.594.054-3.893-.013V7.3c-.003.196.017.39.06.584.1.434.34.8.72 1.057.38.255.856.383 1.418.383.554 0 1.015-.13 1.4-.393.38-.266.63-.635.735-1.1.04-.175.057-.355.057-.534v-.274c0-.186-.02-.394-.057-.625l-.02-.135h2.018l-.024.135c-.04.23-.06.44-.06.627v.274c0 .18.017.36.057.534.1.467.35.836.733 1.1.38.263.843.392 1.397.392.552 0 1.016-.128 1.393-.39.376-.263.624-.633.723-1.1.04-.193.057-.388.057-.585v-.264c0-.188-.02-.396-.057-.627l-.02-.135h1.995l-.02.135c-.04.228-.06.438-.06.626v.264c0 .197.017.393.057.585.1.467.348.837.726 1.1.38.263.844.392 1.393.392.548 0 1.01-.128 1.386-.39.375-.265.625-.634.726-1.1.04-.194.056-.39.056-.587V8.3c0-.185-.017-.393-.055-.624a.283.283 0 00-.012-.05h2.03a.228.228 0 00-.01.05c-.04.23-.06.44-.06.624V7.95c0 .198.017.394.057.585.1.467.35.836.726 1.1.375.264.84.39 1.39.39.545 0 1.007-.127 1.383-.39.376-.264.625-.633.726-1.1.04-.192.057-.387.057-.584V7.3c.004-.196-.016-.39-.055-.582-.1-.44-.35-.81-.73-1.066a2.253 2.253 0 00-.13-.085z"/></svg>MySQL</span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#336791" width="14" height="14"><path d="M23.5543 16.4034c-.3382-.0348-.6606-.0508-1.2056-.0165-.4858.0297-1.0326-.0118-1.5453.2234-1.3104.5815-1.5817 2.2124-.4803 2.7904.6946.3644 1.3986.2202 2.0738.0347.6703-.1888 1.4278-.3775 1.6437-1.0855.0808-.2666.0808-.4874.0808-.8077-.0013-.7867-.2468-1.0555-.5671-1.1388zM5.9356 20.6316c-.1118-.2906-.3426-.4994-.4867-.7719-.1485-.2793-.2248-.5762-.3527-.859-.2654-.5917-.7003-1.1449-.7163-1.8085l-.0008-.006c-.0125-.4568.1527-.9003.4394-1.3144.1888-.2721.4248-.5103.7033-.7126-.0045-.1527.0099-.3065.0454-.459-.0148-.0161-.0305-.0313-.0453-.0474-.3784-.3972-.6978-.8337-.8875-1.3108-.1899-.4773-.251-1.0028-.1568-1.5207.0443-.2476.1208-.4867.2185-.716-.1485.0125-.2963.0242-.4412.0349-.2985.0221-.5892.0384-.8677.0435-.9946.0199-1.9195-.0773-2.6993-.3718-1.5435-.5794-2.0866-1.8225-1.3434-3.0086.2618-.4169.6474-.7897 1.1247-1.0971-.1527-.4065-.2764-.8247-.3436-1.2462-.2035-1.2703.0982-2.2764.8625-2.7847l.0055-.0033c.5558-.3634 1.2877-.3808 2.1261-.0543.3688.1435.7456.3534 1.1199.6238.2297.1643.4547.3484.6775.5509.3768-.0937.7624-.1718 1.1559-.2276.2792-.0398.5624-.0694.8488-.0889-.0065-.1028-.008-.2069-.0045-.3118.04-1.1867.6094-2.1543 1.508-2.5453.9086-.3965 2.0134-.1115 2.9049.7497.1617.1565.3158.3299.4601.521.5203-.1042 1.0633-.1548 1.5966-.1548s1.0763.0506 1.5966.1548c.1443-.1911.2984-.3645.4601-.521.8915-.8612 1.9963-1.1462 2.9049-.7497.8986.391 1.468 1.3586 1.508 2.5453.0035.1049.002.2090-.0045.3118.2864.0195.5696.0491.8488.0889.3935.0558.779.134 1.1558.2276.2228-.2025.4478-.3866.6775-.5509.3743-.2704.7511-.4803 1.1199-.6238.8384-.3265 1.5703-.3091 2.1261.0543l.0055.0033c.7643.5083 1.066 1.5144.8625 2.7847-.0672.4215-.1909.8397-.3436 1.2462.4773.3074.8629.6802 1.1247 1.0971.7432 1.1861.2001 2.4292-1.3434 3.0086-.7798.2945-1.7047.3917-2.6993.3718-.2785-.0051-.5692-.0214-.8677-.0435-.1449-.0107-.2927-.0224-.4412-.0349.0977.2293.1742.4684.2185.716.0942.5179.0331 1.0434-.1568 1.5207-.1897.4771-.5091.9136-.8875 1.3108-.0148.0161-.0305.0313-.0453.0474.0355.1525.0499.3063.0454.459.2785.2023.5145.4405.7033.7126.2867.4141.4519.8576.4394 1.3144l-.0008.006c-.016.6636-.4509 1.2168-.7163 1.8085-.1279.2828-.2042.5797-.3527.859-.1441.2725-.3749.4813-.4867.7719-.1007.2618.0125.4965.2937.5162.5428.0373 1.0818-.1248 1.5538-.3884.3264-.1825.6202-.4204.8867-.6846.3167-.3123.5895-.6614.832-1.0345.2457-.3755.4521-.7762.5863-1.2062.1339-.4289.2025-.8856.2135-1.3463.0055-.1961-.0225-.3898-.0623-.5818-.0648-.3097-.1908-.6064-.3519-.8761.0702.0031.1421.0045.2133.0043.3756.0014.7563-.0356 1.1242-.1152.5899-.1268 1.1494-.3751 1.5758-.7648.5988-.5443.7837-1.3049.5054-2.0027z"/></svg>PostgreSQL</span>
-        <span class="chip">🗃️ DB Design</span>
-        <span class="chip">🔍 Query Optimisation</span>
+        <span class="chip">🐬 MySQL</span><span class="chip">🐘 PostgreSQL</span>
+        <span class="chip">🗃️ DB Design</span><span class="chip">🔍 Query Optimisation</span>
       </div>
     </div>
-
-    <!-- Frontend -->
     <div class="sk-card rv d3">
-      <div class="sk-head">
-        <div class="sk-ic" style="background:rgba(97,218,251,.12)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#61dbfb"><path d="M12 10.11c1.03 0 1.87.84 1.87 1.89 0 1-.84 1.85-1.87 1.85-1.03 0-1.87-.85-1.87-1.85 0-1.05.84-1.89 1.87-1.89M7.37 20c.63.38 2.01-.2 3.6-1.7-.52-.59-1.03-1.23-1.51-1.9a22.7 22.7 0 01-2.4-.36c-.51 2.14-.32 3.61.31 3.96m.71-5.74l-.29-.51c-.11.29-.22.58-.29.86.27.06.57.11.88.16l-.3-.51m6.54-.76l.81-1.5-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17 9 12.6 9 12 9c-.6 0-1.17 0-1.71.03-.29.47-.61.94-.91 1.47L8.57 12l.81 1.5c.3.53.62 1 .91 1.47.54.03 1.11.03 1.71.03.6 0 1.17 0 1.71-.03.29-.47.61-.94.91-1.47M12 6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0 10.44c.19-.22.39-.45.59-.72h-1.18c.2.27.4.5.59.72M16.62 4c-.62-.38-2 .2-3.59 1.7.52.59 1.03 1.23 1.51 1.9.82.08 1.63.2 2.4.36.51-2.14.32-3.61-.32-3.96m-.7 5.74l.29.51c.11-.29.22-.58.29-.86-.27-.06-.57-.11-.88-.16l.3.51m1.45-7.05c1.47.84 1.63 3.05 1.01 5.63 2.54.75 4.37 1.99 4.37 3.68 0 1.69-1.83 2.93-4.37 3.68.62 2.58.46 4.79-1.01 5.63-1.46.84-3.45-.12-5.37-1.95-1.92 1.83-3.91 2.79-5.38 1.95-1.46-.84-1.62-3.05-1-5.63-2.54-.75-4.37-1.99-4.37-3.68 0-1.69 1.83-2.93 4.37-3.68-.62-2.58-.46-4.79 1-5.63 1.47-.84 3.46.12 5.38 1.95 1.92-1.83 3.91-2.79 5.37-1.95M17.08 12c.34.75.64 1.5.89 2.26 2.1-.63 3.28-1.53 3.28-2.26 0-.73-1.18-1.63-3.28-2.26-.25.76-.55 1.51-.89 2.26M6.92 12c-.34-.75-.64-1.5-.89-2.26-2.1.63-3.28 1.53-3.28 2.26 0 .73 1.18 1.63 3.28 2.26.25-.76.55-1.51.89-2.26m9 2.26l-.3.51c.31-.05.61-.1.88-.16-.07-.28-.18-.57-.29-.86l-.29.51m-2.89 4.04c1.59 1.5 2.97 2.08 3.59 1.7.64-.35.83-1.82.32-3.96-.77.16-1.58.28-2.4.36-.48.67-.99 1.31-1.51 1.9M8.08 9.74l.3-.51c-.31.05-.61.1-.88.16.07.28.18.57.29.86l.29-.51m2.89-4.04C9.38 4.2 8 3.62 7.37 4c-.63.35-.82 1.82-.31 3.96a22.7 22.7 0 012.4-.36c.48-.67.99-1.31 1.51-1.9z"/></svg>
-        </div>
-        <div class="sk-name" style="color:#61dbfb">Frontend</div>
-      </div>
+      <div class="sk-head"><div class="sk-ic" style="background:rgba(97,218,251,.12)"><svg width="20" height="20" viewBox="0 0 24 24" fill="#61dbfb"><path d="M12 10.11c1.03 0 1.87.84 1.87 1.89 0 1-.84 1.85-1.87 1.85-1.03 0-1.87-.85-1.87-1.85 0-1.05.84-1.89 1.87-1.89M7.37 20c.63.38 2.01-.2 3.6-1.7-.52-.59-1.03-1.23-1.51-1.9a22.7 22.7 0 01-2.4-.36c-.51 2.14-.32 3.61.31 3.96m.71-5.74l-.29-.51c-.11.29-.22.58-.29.86.27.06.57.11.88.16l-.3-.51m6.54-.76l.81-1.5-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17 9 12.6 9 12 9c-.6 0-1.17 0-1.71.03-.29.47-.61.94-.91 1.47L8.57 12l.81 1.5c.3.53.62 1 .91 1.47.54.03 1.11.03 1.71.03.6 0 1.17 0 1.71-.03.29-.47.61-.94.91-1.47M12 6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0 10.44c.19-.22.39-.45.59-.72h-1.18c.2.27.4.5.59.72M16.62 4c-.62-.38-2 .2-3.59 1.7.52.59 1.03 1.23 1.51 1.9.82.08 1.63.2 2.4.36.51-2.14.32-3.61-.32-3.96m-.7 5.74l.29.51c.11-.29.22-.58.29-.86-.27-.06-.57-.11-.88-.16l.3.51m1.45-7.05c1.47.84 1.63 3.05 1.01 5.63 2.54.75 4.37 1.99 4.37 3.68 0 1.69-1.83 2.93-4.37 3.68.62 2.58.46 4.79-1.01 5.63-1.46.84-3.45-.12-5.37-1.95-1.92 1.83-3.91 2.79-5.38 1.95-1.46-.84-1.62-3.05-1-5.63-2.54-.75-4.37-1.99-4.37-3.68 0-1.69 1.83-2.93 4.37-3.68-.62-2.58-.46-4.79 1-5.63 1.47-.84 3.46.12 5.38 1.95 1.92-1.83 3.91-2.79 5.37-1.95M17.08 12c.34.75.64 1.5.89 2.26 2.1-.63 3.28-1.53 3.28-2.26 0-.73-1.18-1.63-3.28-2.26-.25.76-.55 1.51-.89 2.26M6.92 12c-.34-.75-.64-1.5-.89-2.26-2.1.63-3.28 1.53-3.28 2.26 0 .73 1.18 1.63 3.28 2.26.25-.76.55-1.51.89-2.26z"/></svg></div><div class="sk-name" style="color:#61dbfb">Frontend</div></div>
       <div class="chips">
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#61dbfb" width="14" height="14"><path d="M12 10.11c1.03 0 1.87.84 1.87 1.89 0 1-.84 1.85-1.87 1.85-1.03 0-1.87-.85-1.87-1.85 0-1.05.84-1.89 1.87-1.89M7.37 20c.63.38 2.01-.2 3.6-1.7-.52-.59-1.03-1.23-1.51-1.9a22.7 22.7 0 01-2.4-.36c-.51 2.14-.32 3.61.31 3.96m.71-5.74l-.29-.51c-.11.29-.22.58-.29.86.27.06.57.11.88.16l-.3-.51m6.54-.76l.81-1.5-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17 9 12.6 9 12 9c-.6 0-1.17 0-1.71.03-.29.47-.61.94-.91 1.47L8.57 12l.81 1.5c.3.53.62 1 .91 1.47.54.03 1.11.03 1.71.03.6 0 1.17 0 1.71-.03.29-.47.61-.94.91-1.47M12 6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0 10.44c.19-.22.39-.45.59-.72h-1.18c.2.27.4.5.59.72M16.62 4c-.62-.38-2 .2-3.59 1.7.52.59 1.03 1.23 1.51 1.9.82.08 1.63.2 2.4.36.51-2.14.32-3.61-.32-3.96m-.7 5.74l.29.51c.11-.29.22-.58.29-.86-.27-.06-.57-.11-.88-.16l.3.51m1.45-7.05c1.47.84 1.63 3.05 1.01 5.63 2.54.75 4.37 1.99 4.37 3.68 0 1.69-1.83 2.93-4.37 3.68.62 2.58.46 4.79-1.01 5.63-1.46.84-3.45-.12-5.37-1.95-1.92 1.83-3.91 2.79-5.38 1.95-1.46-.84-1.62-3.05-1-5.63-2.54-.75-4.37-1.99-4.37-3.68 0-1.69 1.83-2.93 4.37-3.68-.62-2.58-.46-4.79 1-5.63 1.47-.84 3.46.12 5.38 1.95 1.92-1.83 3.91-2.79 5.37-1.95M17.08 12c.34.75.64 1.5.89 2.26 2.1-.63 3.28-1.53 3.28-2.26 0-.73-1.18-1.63-3.28-2.26-.25.76-.55 1.51-.89 2.26M6.92 12c-.34-.75-.64-1.5-.89-2.26-2.1.63-3.28 1.53-3.28 2.26 0 .73 1.18 1.63 3.28 2.26.25-.76.55-1.51.89-2.26z"/></svg>React</span>
-        <span class="chip">🎨 Tailwind CSS</span>
-        <span class="chip">📱 Responsive UI</span>
-        <span class="chip">📜 HTML / CSS</span>
+        <span class="chip">⚛️ React</span><span class="chip">🎨 Tailwind CSS</span>
+        <span class="chip">📱 Responsive UI</span><span class="chip">📜 HTML / CSS</span>
       </div>
     </div>
-
-    <!-- Tools -->
     <div class="sk-card rv d1">
-      <div class="sk-head">
-        <div class="sk-ic" style="background:rgba(167,139,250,.12)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
-        </div>
-        <div class="sk-name" style="color:#a78bfa">Tools & DevOps</div>
-      </div>
+      <div class="sk-head"><div class="sk-ic" style="background:rgba(167,139,250,.12)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 012 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg></div><div class="sk-name" style="color:#a78bfa">Tools & DevOps</div></div>
       <div class="chips">
-        <span class="chip"><svg viewBox="0 0 24 24" fill="#f05032" width="14" height="14"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></svg>Git / GitHub</span>
-        <span class="chip">📓 Jupyter Notebook</span>
-        <span class="chip">🖥️ VS Code</span>
-        <span class="chip">🐧 Linux (Ubuntu)</span>
-        <span class="chip">📦 npm / pip</span>
-        <span class="chip">🔧 Postman</span>
+        <span class="chip">🔀 Git / GitHub</span><span class="chip">📓 Jupyter</span>
+        <span class="chip">🖥️ VS Code</span><span class="chip">🐧 Linux (Ubuntu)</span>
+        <span class="chip">📦 npm / pip</span><span class="chip">🔧 Postman</span>
       </div>
     </div>
-
-    <!-- Soft Skills -->
     <div class="sk-card rv d2" style="grid-column:span 2">
-      <div class="sk-head">
-        <div class="sk-ic" style="background:rgba(255,180,50,.12)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffb432" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-        </div>
-        <div class="sk-name" style="color:#ffb432">Soft Skills</div>
-      </div>
+      <div class="sk-head"><div class="sk-ic" style="background:rgba(255,180,50,.12)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffb432" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><div class="sk-name" style="color:#ffb432">Soft Skills</div></div>
       <div class="chips">
-        <span class="chip">👑 Leadership</span>
-        <span class="chip">🤝 Team Collaboration</span>
-        <span class="chip">🔍 Analytical Thinking</span>
-        <span class="chip">🗣️ Communication</span>
-        <span class="chip">📋 Project Management</span>
-        <span class="chip">⏰ Time Management</span>
-        <span class="chip">🎯 Problem Solving</span>
-        <span class="chip">🔄 Adaptability</span>
+        <span class="chip">👑 Leadership</span><span class="chip">🤝 Team Collaboration</span>
+        <span class="chip">🔍 Analytical Thinking</span><span class="chip">🗣️ Communication</span>
+        <span class="chip">📋 Project Management</span><span class="chip">⏰ Time Management</span>
+        <span class="chip">🎯 Problem Solving</span><span class="chip">🔄 Adaptability</span>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ══ EXPERIENCE ══ -->
+<!-- EXPERIENCE -->
 <section id="experience">
   <div class="s-head rv">
     <div class="s-eyebrow">03 — Work Experience</div>
     <h2 class="s-title">Where I've Made an <em>Impact</em></h2>
     <div class="s-divider"></div>
   </div>
-
-  <div class="exp-card rv d2" style="margin-top: 1.5rem; box-shadow: var(--glow-a); border-color: var(--amber); transform: translateY(-5px);">
+  <div class="exp-card rv d2" style="margin-top:1.5rem;box-shadow:var(--glow-a);border-color:var(--amber);transform:translateY(-5px)">
     <div class="exp-top">
       <div>
         <div class="exp-role">C++ & DSA Trainee</div>
@@ -657,16 +538,15 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
       <li>Achieved consistent improvement in implementation accuracy through structured, discipline-driven daily practice sessions.</li>
     </ul>
     <div class="exp-tags">
-      <span class="exp-tag">C++</span>
-      <span class="exp-tag">DSA</span>
-      <span class="exp-tag">Algorithms</span>
-      <span class="exp-tag">Competitive Programming</span>
-      <span class="exp-tag">OOP</span>
+      <span class="exp-tag">C++</span><span class="exp-tag">DSA</span><span class="exp-tag">Algorithms</span>
+      <span class="exp-tag">Competitive Programming</span><span class="exp-tag">OOP</span>
     </div>
   </div>
 </section>
 
-<!-- ══ PROJECTS ══ -->
+<!-- ════════════════════════════════════
+     PROJECTS — with screenshot infographics
+════════════════════════════════════ -->
 <section id="projects">
   <div class="s-head rv">
     <div class="s-eyebrow">04 — Featured Work</div>
@@ -676,10 +556,11 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
   </div>
   <div class="proj-grid">
 
-    <!-- ChitChat -->
+    <!-- ① ChitChat — ACTUAL SCREENSHOT -->
     <div class="pj rv d1">
-      <div class="pj-preview" style="background:linear-gradient(135deg,#0a2a1a,#1a2e0f)">
-        <div class="pj-icon" style="color:#00ffb3">💬</div>
+      <div class="pj-preview has-shot">
+        <!-- 📌 Screenshot file: chitchat-preview.png (place in same folder as this HTML) -->
+        <img src="Screenshot 2025-05-30 102836.png" alt="ChitChat — Real-Time Messaging App Screenshot"/>
         <span class="pj-badge" style="background:rgba(0,255,179,.15);color:#00ffb3;border:1px solid rgba(0,255,179,.3)">⚡ Real-Time</span>
       </div>
       <div class="pj-body">
@@ -705,10 +586,10 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
       </div>
     </div>
 
-    <!-- Voice Assistant -->
+    <!-- ② Voice Assistant — ACTUAL SCREENSHOT -->
     <div class="pj rv d2">
-      <div class="pj-preview" style="background:linear-gradient(135deg,#1a0a2e,#2a1a3e)">
-        <div class="pj-icon" style="color:#a78bfa">🎙️</div>
+      <div class="pj-preview has-shot">
+        <img src="ai.png" alt="AI-Powered Voice Assistant Screenshot"/>
         <span class="pj-badge" style="background:rgba(167,139,250,.15);color:#a78bfa;border:1px solid rgba(167,139,250,.3)">🤖 AI / NLP</span>
       </div>
       <div class="pj-body">
@@ -733,10 +614,10 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
       </div>
     </div>
 
-    <!-- Credit Risk -->
+    <!-- ③ Credit Risk — ACTUAL SCREENSHOT -->
     <div class="pj rv d3">
-      <div class="pj-preview" style="background:linear-gradient(135deg,#1a1a0a,#2a2a10)">
-        <div class="pj-icon" style="color:#ffb432">📊</div>
+      <div class="pj-preview has-shot">
+        <img src="images.png" alt="Credit Risk Management Project Screenshot"/>
         <span class="pj-badge" style="background:rgba(255,180,50,.15);color:#ffb432;border:1px solid rgba(255,180,50,.3)">🤖 ML / FinTech</span>
       </div>
       <div class="pj-body">
@@ -761,10 +642,11 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
       </div>
     </div>
 
-    <!-- Fake News Detector (bonus) -->
+    <!-- ④ Fake News — PLACEHOLDER -->
     <div class="pj rv d1">
-      <div class="pj-preview" style="background:linear-gradient(135deg,#1a0e0e,#2e1a1a)">
-        <div class="pj-icon" style="color:#ff4500">🧠</div>
+      <div class="pj-preview">
+        <!-- 📌 Replace placeholder: add src="fakenews-preview.png" img tag when ready -->
+        <img src="download.png" alt="Fake News Detection System project preview">
         <span class="pj-badge" style="background:rgba(255,69,0,.15);color:#ff6032;border:1px solid rgba(255,69,0,.3)">🔎 NLP</span>
       </div>
       <div class="pj-body">
@@ -793,7 +675,9 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
   </div>
 </section>
 
-<!-- ══ CERTS ══ -->
+<!-- ════════════════════════════════════
+     CERTS — with image placeholder slots
+════════════════════════════════════ -->
 <section id="certs">
   <div class="s-head rv">
     <div class="s-eyebrow">05 — Credentials</div>
@@ -801,31 +685,55 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
     <div class="s-divider"></div>
   </div>
   <div class="cert-grid">
+
+    <!-- Cert 1 — Cloud Computing -->
     <div class="cc rv d1">
-      <div class="cc-ico">☁️</div>
-      <div class="cc-plat">NPTEL</div>
-      <div class="cc-name">Cloud Computing</div>
-      <div class="cc-date">Apr 2025</div>
-      <a href="https://drive.google.com/file/d/1mYImrvb3QwneMSzlKekErAIapWbPK696/view?usp=drive_link" class="cc-link">View Certificate →</a>
+      <!-- NPTEL certificate screenshot -->
+      <div class="cc-preview">
+        <img src="Screenshot 2025-06-20 075038.png" alt="NPTEL Cloud Computing Certificate">
+      </div>
+      <div class="cc-body">
+        <div class="cc-ico">☁️</div>
+        <div class="cc-plat">NPTEL</div>
+        <div class="cc-name">Cloud Computing</div>
+        <div class="cc-date">Apr 2025</div>
+        <a href="https://drive.google.com/file/d/1mYImrvb3QwneMSzlKekErAIapWbPK696/view?usp=drive_link" class="cc-link">View Certificate →</a>
+      </div>
     </div>
+
+    <!-- Cert 2 — Data Science Bootcamp -->
     <div class="cc rv d2">
-      <div class="cc-ico">📊</div>
-      <div class="cc-plat">GeeksforGeeks</div>
-      <div class="cc-name">Data Science Bootcamp</div>
-      <div class="cc-date">Jul 2025</div>
-      <a href="https://www.geeksforgeeks.org/certificate/35993a2afc3a8d40ea2661b4e389a38f" class="cc-link">View Certificate →</a>
+      <div class="cc-preview">
+        <img src="image.png" alt="Data Science Bootcamp Certificate">
+      </div>
+      <div class="cc-body">
+        <div class="cc-ico">📊</div>
+        <div class="cc-plat">GeeksforGeeks</div>
+        <div class="cc-name">Data Science Bootcamp</div>
+        <div class="cc-date">Jul 2025</div>
+        <a href="https://www.geeksforgeeks.org/certificate/35993a2afc3a8d40ea2661b4e389a38f" class="cc-link">View Certificate →</a>
+      </div>
     </div>
+
+    <!-- Cert 3 — C++ & DSA -->
     <div class="cc rv d3">
-      <div class="cc-ico">⚡</div>
-      <div class="cc-plat">CSE Pathashala</div>
-      <div class="cc-name">C++ &amp; Data Structures — Summer Training</div>
-      <div class="cc-date">Jun 2025</div>
-      <a href="https://drive.google.com/file/d/173k9x5rZ4GP-05pPDKN4G0JG1wRYFpCH/view?usp=sharing" class="cc-link">View Certificate →</a>
+      <!-- 📌 Replace with: <img src="cert-cpp.png" alt="C++ DSA Certificate"> when ready -->
+      <div class="cc-preview">
+        <img src="Screenshot 2026-03-22 190330.png" alt="C++ and DSA certificate">
+      </div>
+      <div class="cc-body">
+        <div class="cc-ico">⚡</div>
+        <div class="cc-plat">CSE Pathashala</div>
+        <div class="cc-name">C++ &amp; Data Structures — Summer Training</div>
+        <div class="cc-date">Jun 2025</div>
+        <a href="https://drive.google.com/file/d/173k9x5rZ4GP-05pPDKN4G0JG1wRYFpCH/view?usp=sharing" class="cc-link">View Certificate →</a>
+      </div>
     </div>
+
   </div>
 </section>
 
-<!-- ══ ACHIEVEMENTS ══ -->
+<!-- ACHIEVEMENTS -->
 <section id="achievements">
   <div class="s-head rv" style="text-align:center">
     <div class="s-eyebrow" style="justify-content:center">06 — Milestones</div>
@@ -843,36 +751,14 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
     </div>
   </div>
   <div class="ach-grid">
-
-    <div class="ach-card rv d2">
-      <span class="ach-em">💻</span>
-      <div class="ach-ct">150+ DSA Problems Solved</div>
-      <div class="ach-cd">Solved 150+ algorithmic problems spanning arrays, trees, graphs, DP, backtracking, and greedy algorithms across multiple competitive platforms.</div>
-      <span class="ach-medal medal-s">⚡ Multi-Platform · Consistent</span>
-    </div>
-    <div class="ach-card rv d3">
-      <span class="ach-em">🎓</span>
-      <div class="ach-ct">99% in Class 10th</div>
-      <div class="ach-cd">Achieved an outstanding 99.0% in SSC Board Examinations, demonstrating exceptional academic discipline and foundational excellence.</div>
-      <span class="ach-medal medal-g">🌟 Academic Excellence</span>
-    </div>
-    <div class="ach-card rv d1">
-      <span class="ach-em">🛡️</span>
-      <div class="ach-ct">Open Source Contributor</div>
-      <div class="ach-cd">Contributed to open-source Python and ML projects on GitHub, improving documentation, fixing bugs, and adding feature improvements.</div>
-      <span class="ach-medal medal-b">🔓 Open Source</span>
-    </div>
-    <div class="ach-card rv d2">
-      <span class="ach-em">🚀</span>
-      <div class="ach-ct">Production-Deployed Projects</div>
-      <div class="ach-cd">Successfully designed, built, and deployed 3 full-stack and AI projects with measurable real-world performance metrics.</div>
-      <span class="ach-medal medal-s">📦 3 Deployed · Verified Metrics</span>
-    </div>
-
+    <div class="ach-card rv d2"><span class="ach-em">💻</span><div class="ach-ct">150+ DSA Problems Solved</div><div class="ach-cd">Solved 150+ algorithmic problems spanning arrays, trees, graphs, DP, backtracking, and greedy algorithms across multiple competitive platforms.</div><span class="ach-medal medal-s">⚡ Multi-Platform · Consistent</span></div>
+    <div class="ach-card rv d3"><span class="ach-em">🎓</span><div class="ach-ct">99% in Class 10th</div><div class="ach-cd">Achieved an outstanding 99.0% in SSC Board Examinations, demonstrating exceptional academic discipline and foundational excellence.</div><span class="ach-medal medal-g">🌟 Academic Excellence</span></div>
+    <div class="ach-card rv d1"><span class="ach-em">🛡️</span><div class="ach-ct">Open Source Contributor</div><div class="ach-cd">Contributed to open-source Python and ML projects on GitHub, improving documentation, fixing bugs, and adding feature improvements.</div><span class="ach-medal medal-b">🔓 Open Source</span></div>
+    <div class="ach-card rv d2"><span class="ach-em">🚀</span><div class="ach-ct">Production-Deployed Projects</div><div class="ach-cd">Successfully designed, built, and deployed 3 full-stack and AI projects with measurable real-world performance metrics.</div><span class="ach-medal medal-s">📦 3 Deployed · Verified Metrics</span></div>
   </div>
 </section>
 
-<!-- ══ EDUCATION ══ -->
+<!-- EDUCATION -->
 <section id="education">
   <div class="s-head rv">
     <div class="s-eyebrow">07 — Academic Journey</div>
@@ -885,11 +771,7 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
       <div class="edu-card">
         <div class="edu-deg">B.Tech — Computer Science & Engineering</div>
         <div class="edu-school">🎓 Lovely Professional University</div>
-        <div class="edu-meta">
-          <span>📍 Phagwara, Punjab</span>
-          <span>📅 Aug 2023 – Present</span>
-          <span class="sc">⭐ CGPA: 7.6</span>
-        </div>
+        <div class="edu-meta"><span>📍 Phagwara, Punjab</span><span>📅 Aug 2023 – Present</span><span class="sc">⭐ CGPA: 7.6</span></div>
       </div>
     </div>
     <div class="edu-item rv d1">
@@ -897,11 +779,7 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
       <div class="edu-card">
         <div class="edu-deg">Intermediate — Class XII (MPC)</div>
         <div class="edu-school">🏫 Sri Chaitanya Junior College</div>
-        <div class="edu-meta">
-          <span>📍 Vijayawada, Andhra Pradesh</span>
-          <span>📅 Apr 2021 – Mar 2023</span>
-          <span class="sc">⭐ 88.7%</span>
-        </div>
+        <div class="edu-meta"><span>📍 Vijayawada, Andhra Pradesh</span><span>📅 Apr 2021 – Mar 2023</span><span class="sc">⭐ 88.7%</span></div>
       </div>
     </div>
     <div class="edu-item rv d2">
@@ -909,17 +787,13 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
       <div class="edu-card">
         <div class="edu-deg">SSC — Class X</div>
         <div class="edu-school">🏫 Ravindra Bharathi School</div>
-        <div class="edu-meta">
-          <span>📍 Vijayawada, Andhra Pradesh</span>
-          <span>📅 Apr 2020 – Mar 2021</span>
-          <span class="sc">⭐ 99.0%</span>
-        </div>
+        <div class="edu-meta"><span>📍 Vijayawada, Andhra Pradesh</span><span>📅 Apr 2020 – Mar 2021</span><span class="sc">⭐ 99.0%</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CONTACT ══ -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="s-head rv">
     <div class="s-eyebrow">08 — Let's Connect</div>
@@ -930,33 +804,23 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
   <div class="contact-wrap">
     <div class="contact-links rv rl">
       <a href="mailto:kasaranenikarthikeya4@gmail.com" class="c-card">
-        <div class="c-ic" style="background:rgba(255,180,50,.1);color:#ffb432">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
+        <div class="c-ic" style="background:rgba(255,180,50,.1);color:#ffb432"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <div class="c-kv"><div class="c-k">Email</div><div class="c-v">kasaranenikarthikeya4@gmail.com</div></div>
       </a>
       <a href="https://www.linkedin.com/in/karthikeya-kasaraneni/" target="_blank" class="c-card">
-        <div class="c-ic" style="background:rgba(10,102,194,.15);color:#0a66c2">
-          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </div>
+        <div class="c-ic" style="background:rgba(10,102,194,.15);color:#0a66c2"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
         <div class="c-kv"><div class="c-k">LinkedIn</div><div class="c-v">karthikeya-kasaraneni</div></div>
       </a>
       <a href="https://github.com/kasaranenikarthikeya" target="_blank" class="c-card">
-        <div class="c-ic" style="background:rgba(255,255,255,.06);color:#f0ead6">
-          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        </div>
+        <div class="c-ic" style="background:rgba(255,255,255,.06);color:#f0ead6"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></div>
         <div class="c-kv"><div class="c-k">GitHub</div><div class="c-v">kasaranenikarthikeya</div></div>
       </a>
       <a href="tel:+917816036013" class="c-card">
-        <div class="c-ic" style="background:rgba(0,255,179,.08);color:#00ffb3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.11 7.01 19.79 19.79 0 01.02 2.27 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.22 6.22l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        </div>
+        <div class="c-ic" style="background:rgba(0,255,179,.08);color:#00ffb3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.11 7.01 19.79 19.79 0 01.02 2.27 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.22 6.22l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
         <div class="c-kv"><div class="c-k">Phone</div><div class="c-v">+91-7816036013</div></div>
       </a>
       <a href="https://leetcode.com/kasaranenikarthikeya" target="_blank" class="c-card">
-        <div class="c-ic" style="background:rgba(255,180,50,.08);color:#ffb432">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
-        </div>
+        <div class="c-ic" style="background:rgba(255,180,50,.08);color:#ffb432"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg></div>
         <div class="c-kv"><div class="c-k">LeetCode</div><div class="c-v">kasaranenikarthikeya</div></div>
       </a>
     </div>
@@ -983,15 +847,9 @@ footer strong{background:var(--grad-a);-webkit-background-clip:text;-webkit-text
 </button>
 
 <script>
-/* ══ LOADER ══ */
 window.addEventListener('load',()=>{
-  setTimeout(()=>{
-    document.getElementById('ldr').classList.add('out');
-    setTimeout(()=>document.getElementById('ldr').remove(),700);
-  },1900);
+  setTimeout(()=>{document.getElementById('ldr').classList.add('out');setTimeout(()=>document.getElementById('ldr').remove(),700)},1900);
 });
-
-/* ══ CURSOR ══ */
 const C=document.getElementById('cur'),R=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;C.style.left=mx+'px';C.style.top=my+'px'});
@@ -1000,8 +858,6 @@ document.querySelectorAll('a,button,.pj,.cc,.ach-card,.stat-box,.c-card').forEac
   el.addEventListener('mouseenter',()=>{R.style.width='58px';R.style.height='58px';R.style.borderColor='rgba(255,180,50,.8)'});
   el.addEventListener('mouseleave',()=>{R.style.width='34px';R.style.height='34px';R.style.borderColor='rgba(255,180,50,.5)'});
 });
-
-/* ══ SCROLL EVENTS ══ */
 const nav=document.getElementById('nav'),pg=document.getElementById('pgbar'),bt=document.getElementById('btop');
 window.addEventListener('scroll',()=>{
   const s=scrollY,h=document.documentElement.scrollHeight-innerHeight;
@@ -1009,16 +865,10 @@ window.addEventListener('scroll',()=>{
   nav.classList.toggle('solid',s>60);
   bt.classList.toggle('show',s>500);
 });
-
-/* ══ NAV HAMBURGER ══ */
 document.getElementById('ham').addEventListener('click',()=>document.getElementById('navMenu').classList.toggle('open'));
 document.querySelectorAll('.nav-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navMenu').classList.remove('open')));
-
-/* ══ SCROLL REVEAL ══ */
 const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');rvObs.unobserve(e.target)}})},{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
-
-/* ══ TYPED TEXT ══ */
 const phrases=["AI / ML Developer 🤖","Backend Engineer — FastAPI & WebSockets","150+ DSA Problems Solved ⚡","Building Systems That Think and Scale"];
 let pi=0,ci=0,del=false;
 const typed=document.getElementById('typed');
@@ -1029,34 +879,26 @@ function tick(){
   setTimeout(tick,del?40:85);
 }
 setTimeout(tick,2400);
-
-/* ══ COUNTERS ══ */
 function animateNum(el,target,suffix='',dur=2000){
   let s=0,step=target/(dur/16);
   function f(){s=Math.min(s+step,target);el.textContent=Math.floor(s)+suffix;if(s<target)requestAnimationFrame(f)}
   requestAnimationFrame(f);
 }
-// stat boxes
 const statObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.querySelectorAll('[data-count]').forEach(el=>{
-        const t=+el.dataset.count,s=el.textContent.includes('%')?'%':'+';
-        animateNum(el,t,t>=90?'%':'+');
-      });
-      statObs.unobserve(e.target);
+        const t=+el.dataset.count;animateNum(el,t,t>=90?'%':'+');
+      });statObs.unobserve(e.target);
     }
   });
 },{threshold:.3});
 document.querySelectorAll('.stats-row').forEach(el=>statObs.observe(el));
-// big counter
 const achEl=document.getElementById('achCount');
 const achObs=new IntersectionObserver(entries=>{
   if(entries[0].isIntersecting){animateNum(achEl,150,'+');achObs.disconnect()}
 },{threshold:.4});
 achObs.observe(achEl);
-
-/* ══ PARTICLES CANVAS ══ */
 const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');
 let W,H,pts=[];
 function resize(){W=cvs.width=innerWidth;H=cvs.height=innerHeight}
@@ -1065,10 +907,8 @@ for(let i=0;i<90;i++) pts.push({x:Math.random()*innerWidth,y:Math.random()*inner
 function draw(){
   ctx.clearRect(0,0,W,H);
   for(let i=0;i<pts.length;i++){
-    const p=pts[i];
-    p.x+=p.dx;p.y+=p.dy;
-    if(p.x<0)p.x=W;if(p.x>W)p.x=0;
-    if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+    const p=pts[i];p.x+=p.dx;p.y+=p.dy;
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
     ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
     ctx.fillStyle=`rgba(255,180,50,${p.o})`;ctx.fill();
     for(let j=i+1;j<pts.length;j++){

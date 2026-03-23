@@ -295,8 +295,8 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .ach-platforms{display:flex;justify-content:center;gap:1rem;margin-top:2rem;flex-wrap:wrap}
 .ach-pill{display:flex;align-items:center;gap:.6rem;padding:.5rem 1.3rem;background:var(--card);border:1px solid var(--border);border-radius:100px;font-size:.83rem;transition:all .3s}
 .ach-pill:hover{border-color:var(--amber);transform:translateY(-3px);box-shadow:var(--glow-a)}
-.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem}
-.ach-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2rem;transition:all .35s;text-align:center}
+.ach-grid{display:grid;grid-template-columns:repeat(3,minmax(240px,300px));justify-content:center;gap:1.25rem;max-width:980px;margin:0 auto}
+.ach-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:2rem;transition:all .35s;text-align:center;width:100%}
 .ach-card:hover{transform:scale(1.03);border-color:rgba(255,180,50,.35);box-shadow:var(--glow-a)}
 .ach-em{font-size:2.5rem;margin-bottom:1rem;display:block}
 .ach-ct{font-family:var(--font-head);font-size:1.1rem;font-weight:800;margin-bottom:.5rem}
@@ -305,6 +305,7 @@ section{position:relative;z-index:2;padding:var(--section-pad);overflow:hidden}
 .medal-g{background:rgba(255,180,50,.12);color:var(--amber);border:1px solid rgba(255,180,50,.3)}
 .medal-s{background:rgba(192,192,192,.12);color:#c0c0c0;border:1px solid rgba(192,192,192,.3)}
 .medal-b{background:rgba(205,127,50,.12);color:#cd7f32;border:1px solid rgba(205,127,50,.3)}
+@media(max-width:980px){.ach-grid{grid-template-columns:repeat(auto-fit,minmax(240px,300px))}}
 
 /* EDUCATION */
 #education{background:var(--deep)}
